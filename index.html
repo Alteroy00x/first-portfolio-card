@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Profile Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card-wrapper">
+    <div class="card">
+      <img src="PXL_20250611_230405055_polarr.jpeg" width="200px">
+      <h1>Tanmay Kamble</h1>
+      <p>Web development enthusiast, learning full stack one step at a time!</p>
+      <ul>
+        <li>HTML</li><br>
+        <li>CSS</li><br>
+        <li>JavaScript</li>
+      </ul>
+      <br>
+      <button><a href="https://github.com/" target="_blank">My GitHub</a></button>
+      <button><a href="mailto:tanmaykamble48@gmail.com" target="_blank">Contact</a></button>
+    </div>
+  </div>
+
+  <script>
+    // 3D Tilt effect
+    const card = document.querySelector('.card');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; // mouse X within card
+      const y = e.clientY - rect.top;  // mouse Y within card
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * 10; // max tilt 10deg
+      const rotateY = ((centerX - x) / centerX) * 10;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  </script>
+</body>
+</html>
+
